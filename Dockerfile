@@ -2,7 +2,7 @@ FROM jenkins/jnlp-slave:alpine as jnlp
 
 FROM node:alpine
 
-RUN apk -U add openjdk8-jre
+RUN apk -U add openjdk8-jre curl
 
 RUN curl https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz | tar zxv && mv hugo /usr/local/bin/hugo
 
