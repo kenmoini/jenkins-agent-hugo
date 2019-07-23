@@ -6,7 +6,7 @@ Yeah, I don't know how else to break it to ya.  This is a Jenkins Build Agent th
 
 This way you can quickly pull in your source, build your site, run your tests, and deploy in a Jenkins pipeline.
 
-Is this overkill for a static site generator like Hugo?  Arguably, but I think everything should be in a build pipeline - probably because I'm the modern day Philip Brainard of technical engineering (not really, those shoes could never be filled...)
+Is this overkill for a static site generator like Hugo?  Arguably, but I think everything should be in a build pipeline - probably because I'm the modern day Philip Brainard of technical over-engineering (not really, those shoes could never be filled...)
 
 ## How to use
 
@@ -62,3 +62,5 @@ spec:
 ```
 
 Otherwise you can use the agent container in any other fashion by pulling from Docker Hub with a quick ``docker pull kenmoini/jenkins-agent-hugo``
+
+Oh yeah, I guess you can ``docker build`` this Dockerfile too if you're into that sorta thing.  It'd be cooler if you hung out with my ``buildah bud``...
