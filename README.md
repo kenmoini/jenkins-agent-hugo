@@ -6,7 +6,7 @@ Yeah, I don't know how else to break it to ya.  This is a Jenkins Build Agent th
 
 This way you can quickly pull in your source, build your site, run your tests, and deploy in a Jenkins pipeline.
 
-Is this overkill for a static site generator like Hugo?  Arguably, but I think everything should be in a build pipeline.
+Is this overkill for a static site generator like Hugo?  Arguably, but I think everything should be in a build pipeline - probably because I'm the modern day Philip Brainard of technical engineering (not really, those shoes could never be filled...)
 
 ## How to use
 
@@ -18,8 +18,45 @@ Is this overkill for a static site generator like Hugo?  Arguably, but I think e
 
 **Don't have have a pipeline?**
 
-No problem, here's an example
+No problem, here's an example, with the agent and pod definition and everything:
 
 ```
-
+pipeline {
+  agent {
+    kubernetes {
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
+spec:
+  containers:
+  - name: hugo
+    image: kenmoini/jenkins-agent-hugo:latest
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
+"""
+    }
+  }
+  stages {
+    stage('Run Hugo') {
+      steps {
+        container('hugo') {
+          sh 'hugo version'
+        }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
+      }
+    }
+  }
+}
 ```
