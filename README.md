@@ -60,3 +60,5 @@ spec:
   }
 }
 ```
+
+Otherwise you can use the agent container in any other fashion by pulling from Docker Hub with a quick ``docker pull kenmoini/jenkins-agent-hugo``
