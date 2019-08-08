@@ -6,7 +6,7 @@ metadata:
     role: jenkins-slave
   name: jenkins-slaves-hugo
 data:
-  nodejs-template: |-
+  hugo-template: |-
     <org.csanchez.jenkins.plugins.kubernetes.PodTemplate>
       <inheritFrom></inheritFrom>
       <name>hugo</name>
